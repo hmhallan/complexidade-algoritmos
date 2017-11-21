@@ -15,69 +15,64 @@ public class Nodo {
     
 	// mapa para associar os nodos adjacentes e o peso (em inteiro) da aresta
 	private Map<Nodo, Integer> nodosAdjacentes;
-
-	private Integer distancia;
-
-	/**
-	 * Cria um nodo com os valores padrão de atributos
-	 * 
-	 * @param nome
-	 *            o nome do Nodo
-	 */
-	public Nodo(String nome) {
-		this.nome = nome;
-		this.caminhoMaisCurto = new LinkedList<>();
-		this.nodosAdjacentes = new HashMap<>();
-
-		// a distancia sempre será iniciada com o valor maximo de integer (para
-		// simular o infinito)
-		this.distancia = Integer.MAX_VALUE;
-	}
-
-	/**
-	 * Adiciona um nodo ajacente a este nodo
-	 * 
-	 * @param destino
-	 *            nodo adjacente
-	 * @param distancia
-	 *            tamanho da aresta
-	 */
-	public void addDestino(Nodo destino, int distancia) {
-		this.nodosAdjacentes.put(destino, distancia);
-	}
-
-	public String escreveCaminho() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Nodo ");
-		sb.append(this.nome);
-		sb.append(": ");
-		if (!this.caminhoMaisCurto.isEmpty()) {
-			for (Nodo m : this.caminhoMaisCurto) {
-				sb.append(m.getNome());
-				sb.append(" -> ");
-			}
-		}
-		// adiciona o nodo atual
-		sb.append(this.nome);
-
-		sb.append(" (distância total: ");
-		sb.append(this.distancia);
-		sb.append(")");
-		return sb.toString();
-	}
-
+    private Integer distancia;
+ 
+    /**
+     * Cria um nodo com os valores padrão de atributos
+     * @param nome o nome do Nodo
+     */
+    public Nodo(String nome) {
+        this.nome = nome;
+        this.caminhoMaisCurto = new LinkedList<>();
+        this.nodosAdjacentes = new HashMap<>();
+        
+        //a distancia sempre será iniciada com o valor maximo de integer (para simular o infinito)
+        this.distancia = Integer.MAX_VALUE;
+    }
+    
+    /**
+     * Adiciona um nodo ajacente a este nodo
+     * @param destino nodo adjacente
+     * @param distancia tamanho da aresta
+     */
+    public void addDestino(Nodo destino, int distancia) {
+    	this.nodosAdjacentes.put(destino, distancia);
+    }
+    
+    
+    public String escreveCaminho(){
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("Nodo ");
+    	sb.append( this.nome );
+    	sb.append(": ");
+    	if (!this.caminhoMaisCurto.isEmpty()){
+	    	for ( Nodo m: this.caminhoMaisCurto ){
+	    		sb.append(m.getNome());
+	    		sb.append(" -> ");
+	    	}
+    	}
+    	//adiciona o nodo atual
+    	sb.append(this.nome);
+    	
+    	sb.append(" (distância total: ");
+    	sb.append(this.distancia);
+    	sb.append(")");
+    	return sb.toString();
+    }
+    
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.nome);
-		sb.append("(");
-		if (this.distancia < Integer.MAX_VALUE) {
-			sb.append(this.distancia);
-		} else {
-			sb.append("infinito");
-		}
-		sb.append(")");
-		return sb.toString();
+    	sb.append( this.nome );
+    	sb.append("(");
+    	if (this.distancia < Integer.MAX_VALUE){
+    		sb.append(this.distancia);
+    	}
+    	else{
+    		sb.append("infinito");
+    	}
+    	sb.append(")");
+    	return sb.toString();
 	}
 
 	public String getNome() {

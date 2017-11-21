@@ -13,21 +13,6 @@ public class Nodo {
 	// lista que contem o caminho mais curto do nodo inicial até o presente nodo
 	private List<Nodo> caminhoMaisCurto;
     
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-    	sb.append( this.nome );
-    	sb.append("(");
-    	if (this.distancia < Integer.MAX_VALUE){
-    		sb.append(this.distancia);
-    	}
-    	else{
-    		sb.append("infinito");
-    	}
-    	sb.append(")");
-    	return sb.toString();
-	}
-
 	// mapa para associar os nodos adjacentes e o peso (em inteiro) da aresta
 	private Map<Nodo, Integer> nodosAdjacentes;
 

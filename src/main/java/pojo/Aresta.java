@@ -39,5 +39,13 @@ public class Aresta {
 	public void setPeso(int peso) {
 		this.peso = peso;
 	}
-
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Origem: " + nodoOrigem.toString());
+		sb.append(", Destino: " + nodoDestino.toString());
+		sb.append(". Peso: " + peso);
+		return sb.toString();
+	}
 }

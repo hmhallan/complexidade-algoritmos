@@ -1,6 +1,10 @@
 package pojo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Grafo {
@@ -37,7 +41,46 @@ public class Grafo {
 		this.arestas = arestas;
 	}
 	
-	public void ordenarArestasPorPeso() {
-		//TODO em desenvolvimento
+	public List<Aresta> ordenarArestasPorPeso() {
+		List<Aresta> lista = new ArrayList<>(arestas); 
+		
+		System.out.println("Arestas antes da ordenação");
+		for (Aresta a: lista) {
+			System.out.println(a.toString());
+		}
+		System.out.println("===========================");
+				
+		Collections.sort(lista, new Comparator<Aresta>() {
+			@Override
+			public int compare(Aresta a1, Aresta a2) {
+				int resultado = 0;
+				if(a1.getPeso() > a2.getPeso()){
+					resultado = 1;
+				}else if(a1.getPeso() < a2.getPeso()){
+					resultado = -1;
+				}
+				return resultado;
+			}
+		});
+		
+		System.out.println("Arestas ordenadas por peso");
+		for (Aresta a: lista) {
+			System.out.println(a.toString());
+		}
+		System.out.println("===========================");
+		
+		return lista;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(Aresta a: this.getArestas()){
+			sb.append(a.toString() + "\n");
+		}
+			
+		return sb.toString();
+	}
+	
+	
 }

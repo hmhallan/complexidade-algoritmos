@@ -8,6 +8,7 @@ import java.util.Map;
 public class Nodo {
 
 	private String nome;
+	private String nomeRepresentanteConjuntoAlgoritmoKruskal;
 
 	// lista que contem o caminho mais curto do nodo inicial até o presente nodo
 	private List<Nodo> caminhoMaisCurto;
@@ -109,6 +110,14 @@ public class Nodo {
 
 	public void setDistancia(Integer distancia) {
 		this.distancia = distancia;
+	}
+
+	public String getNomeRepresentanteConjuntoAlgoritmoKruskal() {
+		return nomeRepresentanteConjuntoAlgoritmoKruskal;
+	}
+
+	public void setNomeRepresentanteConjuntoAlgoritmoKruskal(String nomeRepresentanteConjuntoAlgoritmoKruskal) {
+		this.nomeRepresentanteConjuntoAlgoritmoKruskal = nomeRepresentanteConjuntoAlgoritmoKruskal;
 	}
 
 }

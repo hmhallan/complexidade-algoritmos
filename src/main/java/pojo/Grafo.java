@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class Grafo {
 
-	private Set<Nodo> nodos;
+	private List<Nodo> nodos;
 	private Set<Aresta> arestas;
 
 	public Grafo() {
-		this.nodos = new HashSet<>();
+		this.nodos = new ArrayList<>();
 		this.arestas = new HashSet<>();
 	}
 
@@ -25,11 +25,11 @@ public class Grafo {
 		arestas.add(aresta);
 	}
 
-	public Set<Nodo> getNodos() {
+	public List<Nodo> getNodos() {
 		return nodos;
 	}
 
-	public void setNodos(Set<Nodo> nodos) {
+	public void setNodos(ArrayList<Nodo> nodos) {
 		this.nodos = nodos;
 	}
 
@@ -75,8 +75,18 @@ public class Grafo {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append("Arestas: \n");
 		for(Aresta a: this.getArestas()){
 			sb.append(a.toString() + "\n");
+		}
+			
+		return sb.toString();
+	}
+	
+	public String toStringNodos() {
+		StringBuilder sb = new StringBuilder();
+		for(Nodo n: this.getNodos()){
+			sb.append(n.toString() + "\n");
 		}
 			
 		return sb.toString();

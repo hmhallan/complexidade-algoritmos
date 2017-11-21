@@ -2,7 +2,6 @@ package algoritmos;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import pojo.Aresta;
 import pojo.Grafo;
@@ -44,7 +43,7 @@ public class Kruskal {
 	private static void makeSet(Nodo nodo) {
 		nodo.setNomeRepresentanteConjuntoAlgoritmoKruskal(nodo.getNome());
 	}
-	private static void union(Set<Nodo> nodos, Nodo nodoOrigem, Nodo nodoDestino) {
+	private static void union(List<Nodo> nodos, Nodo nodoOrigem, Nodo nodoDestino) {
 		System.out.println("****** Union (" +  nodoOrigem.toString() + "," + nodoDestino.toString() + ": " + nodoDestino.getNomeRepresentanteConjuntoAlgoritmoKruskal() + ")");
 		
 		Iterator<Nodo> iteratorNodos = nodos.iterator();

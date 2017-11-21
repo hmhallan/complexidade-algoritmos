@@ -1,6 +1,7 @@
 package main;
 
 import algoritmos.Dijkstra;
+import algoritmos.verbose.DijkstraVerbose;
 import pojo.Grafo;
 import pojo.Nodo;
 
@@ -52,7 +53,7 @@ public class ExecutaDijkstra {
 		grafo.addNodo(g);
 		grafo.addNodo(h);
 		
-		Dijkstra.calculaCaminhoMaisCurtoDeUmNodoInicial(grafo, a);
+		DijkstraVerbose.calculaCaminhoMaisCurtoDeUmNodoInicial(grafo, a);
 		
 		System.out.println(a.escreveCaminho());
 		System.out.println(b.escreveCaminho());

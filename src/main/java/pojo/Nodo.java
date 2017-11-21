@@ -59,6 +59,21 @@ public class Nodo {
     	sb.append(")");
     	return sb.toString();
     }
+    
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+    	sb.append( this.nome );
+    	sb.append("(");
+    	if (this.distancia < Integer.MAX_VALUE){
+    		sb.append(this.distancia);
+    	}
+    	else{
+    		sb.append("infinito");
+    	}
+    	sb.append(")");
+    	return sb.toString();
+	}
 
 	public String getNome() {
 		return nome;

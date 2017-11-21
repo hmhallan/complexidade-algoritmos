@@ -1,4 +1,4 @@
-package algoritmos;
+package algoritmos.verbose;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import java.util.Set;
 import pojo.Grafo;
 import pojo.Nodo;
 
-public class Dijkstra {
+public class DijkstraVerbose {
 	
 	public static void calculaCaminhoMaisCurtoDeUmNodoInicial(Grafo Grafo, Nodo inicio) {
 		
@@ -19,12 +19,17 @@ public class Dijkstra {
 	    Set<Nodo> naoVisitados = new HashSet<>();
 	 
 	    naoVisitados.add(inicio);
-	 
+	    
 	    //enquanto houver nodos para visitar
 	    while (naoVisitados.size() != 0) {
 	    	
+	    	
+	    	
 	    	//busca na lista de nao visitados o nodo de menor distancia
 	        Nodo nodoAtual = buscaNodoDeMenorDistancia(naoVisitados);
+	        
+	        System.err.println("Não visitados: " + naoVisitados + " ----> caminho mais curto: " + nodoAtual );
+	        
 	        naoVisitados.remove(nodoAtual);
 	        
 	        //para cada nodo adjacente ao nodo atual
@@ -35,8 +40,12 @@ public class Dijkstra {
 	            
 	            //se o nodo adjacente ainda nao foi visitado
 	            if (!visitados.contains(nodoAdjacente)) {
+	            	System.err.println("\tNodo adjacente [" + nodoAdjacente + "] não visitado " );
 	            	calculaDistanciaMinima(nodoAdjacente, pesoAresta, nodoAtual);
 	            	naoVisitados.add(nodoAdjacente);
+	            }
+	            else{
+	            	System.err.println("\t\t\tNodo adjacente [" + nodoAdjacente + "] JÁ visitado " );
 	            }
 	        }
 	        visitados.add(nodoAtual);
@@ -78,6 +87,8 @@ public class Dijkstra {
 		//se a distancia do inicio ao nodo atual + aresta é menor do que a distancia já calculada no nodo adjacente
 	    if ( distanciaDoInicio + pesoAresta < nodoAdjacente.getDistancia() ) {
 	    	
+	    	System.err.println("\t\tNodo adjacente [" + nodoAdjacente + "] recebe distancia: " + (distanciaDoInicio + pesoAresta) );
+	    	
 	    	//seta a distancia do nodo adjacente ate a origem
 	    	nodoAdjacente.setDistancia(distanciaDoInicio + pesoAresta);
 	    	
@@ -85,6 +96,9 @@ public class Dijkstra {
 	        LinkedList<Nodo> caminhoMaisCurto = new LinkedList<>(nodoAtual.getCaminhoMaisCurto());
 	        caminhoMaisCurto.add(nodoAtual);
 	        nodoAdjacente.setCaminhoMaisCurto(caminhoMaisCurto);
+	    }
+	    else{
+	    	System.err.println("\t\tNodo adjacente [" + nodoAdjacente + "] ja possui distancia menor que " + (distanciaDoInicio + pesoAresta) );
 	    }
 	}
 	

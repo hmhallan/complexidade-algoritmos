@@ -10,7 +10,6 @@ import pojo.Nodo;
 
 public class Dijkstra {
 	
-	
 	public static void calculaCaminhoMaisCurtoDeUmNodoInicial(Grafo Grafo, Nodo inicio) {
 		
 		//seta a distancia do inicio para zero
